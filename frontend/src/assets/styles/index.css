@@ -1,0 +1,26 @@
+main{
+    min-height: 80vh;
+}
+
+.rating span{
+    margin: 0.1rem;
+}
+
+.rating svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--primary);
+}
+
+.rating-text{
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+    font-weight: 600;
+}
+
+.product-title{
+    height: 2.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
