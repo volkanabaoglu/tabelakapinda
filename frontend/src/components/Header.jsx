@@ -1,6 +1,10 @@
 import {Navbar , Nav , Container} from 'react-bootstrap'
 import {FaShoppingCart , FaUser} from 'react-icons/fa'
 import logo from "../assets/logo-1.webp";
+import {LinkContainer} from 'react-router-bootstrap'
+
+// Linkcontainer is used to wrap the Nav.Link to make it work with react-router-dom
+
 const Header = () => {
   return (
     <header>
