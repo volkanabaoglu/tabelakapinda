@@ -19,13 +19,13 @@ const Header = () => {
                             <LinkContainer to="/cart">
                                 <Nav.Link>
                                     <FaShoppingCart />
-                                    Cart
+                                    Sepet
                                 </Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/login">
                                 <Nav.Link>
                                     <FaUser />
-                                    Sign In
+                                    Giriş Yap
                                 </Nav.Link>
                             </LinkContainer>
                         </Nav>

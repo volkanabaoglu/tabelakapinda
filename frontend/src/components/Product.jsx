@@ -20,10 +20,10 @@ const Product = ({ product }) => {
           <Card.Text as="div" className="product-title">
             <Rating
               value={product.rating}
-              text={`${product.numReviews} reviews`}
+              text={` ${product.numReviews} değerlendirme`}
             />
           </Card.Text>
-          <Card.Text as="h3">${product.price}</Card.Text>
+          <Card.Text as="h3">{product.price} TL</Card.Text>
         </Card.Body>
       </Card>
     </>
