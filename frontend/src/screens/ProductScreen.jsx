@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { useParams , useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {
-  Form,Row,Col,Image,ListGroup,Card,Button,
-  ListGroupItem,} from "react-bootstrap";
+import {Form,Row,Col,Image,ListGroup,Card,Button,ListGroupItem,} from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useGetProductDetailsQuery } from "../slices/apiProductSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";
-import { UseDispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -24,7 +22,7 @@ const ProductScreen = () => {
   } = useGetProductDetailsQuery(productId);
 
   const addToCartHandler = () => {
-    dispatch(addToCart({... product , qty}));
+    dispatch(addToCart({...product , qty}));
     navigate('/cart');
   }
 
