@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <>
     <footer>
-        <Container>
+        <Container className='fixed-bottom'>
             <Row>
-                <Col className='text-center py-3'>
+                <Col className='text-center py-3' >
                     <p>TabelaKapinda &copy; {currentYear}</p>
                 </Col>
             </Row>
