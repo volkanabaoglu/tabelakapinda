@@ -8,32 +8,33 @@ import jwt from "jsonwebtoken";
  * @access Public
  */
 const authUser = asyncHandler(async (req, res) => {
-    const {email,password} = req.body;
-    const user = await User.findOne({email:email});
+  const { email, password } = req.body;
+  const user = await User.findOne({ email: email });
 
-    if(user && (await user.matchPassword(password))){
-        const token = jwt.sign({ userId: user._id },`${process.env.JWT_SECRET}`,{ expiresIn:'30d' });
+  if (user && (await user.matchPassword(password))) {
+    const token = jwt.sign({ userId: user._id }, `${process.env.JWT_SECRET}`, {
+      expiresIn: "30d",
+    });
 
-        //Set JWT HTTP-Only cookie
-        res.cookie('jwt',token,{
-            httpOnly:true,
-            secure:process.env.NODE_ENV !== 'development',
-            sameSite:'strict',
-            maxAge:30 * 24 * 60 * 60 * 1000 //30 days
-        })
-        
-        res.json({
-            _id:user._id,
-            name:user.name,
-            email:user.email,
-            isAdmin:user.isAdmin
-        });
-    }else{
-        res.status(401);
-        throw new Error('Invalid email or password !');
-    }
+    //Set JWT HTTP-Only cookie
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== "development",
+      sameSite: "strict",
+      maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
+    });
+
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(401);
+    throw new Error("Invalid email or password !");
+  }
 });
-
 
 /**
  * @desc Register
@@ -41,7 +42,7 @@ const authUser = asyncHandler(async (req, res) => {
  * @access Public
  */
 const registerUser = asyncHandler(async (req, res) => {
-    res.send('register user');
+  res.send("register user");
 });
 
 /**
@@ -50,7 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
  * @access Private
  */
 const logoutUser = asyncHandler(async (req, res) => {
-    res.send('logout user');
+  res.send("logout user");
 });
 
 /**
@@ -59,7 +60,7 @@ const logoutUser = asyncHandler(async (req, res) => {
  * @access Private
  */
 const getUserProfile = asyncHandler(async (req, res) => {
-    res.send('get user profile');
+  res.send("get user profile");
 });
 
 /**
@@ -68,7 +69,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
  * @access Private
  */
 const updateUserProfile = asyncHandler(async (req, res) => {
-    res.send('get user profile');
+  res.send("get user profile");
 });
 
 /**
@@ -77,7 +78,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
  * @access Private/Admin
  */
 const getUsers = asyncHandler(async (req, res) => {
-    res.send('get users');
+  res.send("get users");
 });
 
 /**
@@ -86,7 +87,7 @@ const getUsers = asyncHandler(async (req, res) => {
  * @access Private/Admin
  */
 const getUserById = asyncHandler(async (req, res) => {
-    res.send('get user');
+  res.send("get user");
 });
 
 /**
@@ -95,7 +96,7 @@ const getUserById = asyncHandler(async (req, res) => {
  * @access Private/Admin
  */
 const deleteUser = asyncHandler(async (req, res) => {
-    res.send('delete user');
+  res.send("delete user");
 });
 
 /**
@@ -104,17 +105,17 @@ const deleteUser = asyncHandler(async (req, res) => {
  * @access Private/Admin
  */
 const updateUser = asyncHandler(async (req, res) => {
-    res.send('update users');
+  res.send("update users");
 });
 
 export {
-    authUser,
-    registerUser,
-    logoutUser,
-    getUserProfile,
-    updateUserProfile,
-    getUsers,
-    deleteUser,
-    getUserById,
-    updateUser
-}
+  authUser,
+  registerUser,
+  logoutUser,
+  getUserProfile,
+  updateUserProfile,
+  getUsers,
+  deleteUser,
+  getUserById,
+  updateUser,
+};
