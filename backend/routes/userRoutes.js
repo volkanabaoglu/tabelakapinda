@@ -29,7 +29,7 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
 
-  router
+router
   .route("/:id")
   .get(protect, admin, getUserById)
   .put(protect, admin, updateUser)
