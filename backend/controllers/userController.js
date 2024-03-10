@@ -81,18 +81,17 @@ const logoutUser = asyncHandler(async (req, res) => {
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
-  if(!user){
+  if (!user) {
     res.status(404);
-    throw new Error ('User not found');
+    throw new Error("User not found");
   }
 
   res.status(200).json({
-    _id : user._id,
-    name : user.name,
-    email : user.email,
-    isAdmin : user.isAdmin
-  })
-
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    isAdmin: user.isAdmin,
+  });
 });
 
 /**
@@ -122,12 +121,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
     const updatedUser = await user.save();
     res.status(200).json({
-      _id : updatedUser._id,
-      name : updatedUser.name,
-      email : updatedUser.email,
-      password : updatedUser.password
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      password: updatedUser.password,
     });
-
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -139,7 +137,12 @@ const updateUserProfile = asyncHandler(async (req, res) => {
  * @access Private/Admin
  */
 const getUsers = asyncHandler(async (req, res) => {
-  res.send("get users");
+  const user = await User.findById(req.user._id);
+  if (user.isAdmin !== true) {
+    res.status(403).json({ error: "You do not have permission to view users" });
+  }
+  const users = await User.find();
+  res.status(200).json(users);
 });
 
 /**
