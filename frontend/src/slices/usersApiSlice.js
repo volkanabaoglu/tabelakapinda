@@ -9,7 +9,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method : 'POST',
         body:data,
       }),
-      keepUnusedDataFor: 5,
     }),
   }),
 });
