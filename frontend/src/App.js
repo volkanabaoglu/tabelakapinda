@@ -6,9 +6,8 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <>
+    <div>
       <Header />
-
       <main className="py-3">
         <Container>
           <Outlet />
@@ -18,7 +17,8 @@ const App = () => {
       <footer className="fixed bottom-0">
         <Footer />
       </footer>
-    </>
+
+    </div>
   );
 };
 
