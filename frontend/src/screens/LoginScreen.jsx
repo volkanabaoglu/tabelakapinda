@@ -19,11 +19,11 @@ const LoginScreen = () => {
 
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
-  const redirect = sp.get('redirect');
+  const redirect = sp.get('redirect') || '/'; // Eğer redirect yoksa varsayılan değeri '/'
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect ? redirect : '/');
+      navigate(redirect);
     }
   }, [navigate, userInfo, redirect]); // Burada 'redirect' eklendi
 
@@ -33,7 +33,7 @@ const LoginScreen = () => {
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
-      navigate(redirect ? redirect : '/');
+      navigate(redirect);
     } catch (error) {
       Toast.error(error?.data?.message || error.error);
     }
